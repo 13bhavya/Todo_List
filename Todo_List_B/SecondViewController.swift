@@ -36,18 +36,18 @@ class SecondViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        ref = Database.database().reference()
+        ref = Database.database().reference().child("Tasks")
         
     }
     
     func saveData() {
         
-        //let key = ref.childByAutoId().key
+        let key = ref.childByAutoId().key!
         
         let task = ["task_title": input.text! as String,
                     "task_description": listInfo.text! as String]
         
-        ref.childByAutoId().setValue(task)
+        ref.child(key).setValue(task)
     }
 }
 

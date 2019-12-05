@@ -8,13 +8,13 @@
 
 class TaskModel{
     
-    var id: String!
-    var task: String!
-    var description: String!
+    var id: String?
+    var task: String?
+    var description: String?
     
-    init(id:String!, task:String!, description:String!) {
-        self.id = id!
-        self.task = task!
-        self.description = description!
+    init(id: String?, task:String?, description:String?) {
+        self.id = id;
+        self.task = task;
+        self.description = description;
     }
 }
