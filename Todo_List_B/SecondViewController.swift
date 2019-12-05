@@ -13,7 +13,7 @@ import Firebase
 
 class SecondViewController: UIViewController {
 
-    var ref = DatabaseReference.init()
+    var ref: DatabaseReference!
     //let ref = Database.database().reference()
 
     @IBOutlet weak var input: UITextField!
@@ -41,8 +41,13 @@ class SecondViewController: UIViewController {
     }
     
     func saveData() {
-        self.ref.child("Task").child("title").setValue(input)
-        self.ref.child("Task").child("description").setValue(listInfo)
+        
+        //let key = ref.childByAutoId().key
+        
+        let task = ["task_title": input.text! as String,
+                    "task_description": listInfo.text! as String]
+        
+        ref.childByAutoId().setValue(task)
     }
 }
 

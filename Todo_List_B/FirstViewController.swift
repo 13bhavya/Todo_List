@@ -8,37 +8,42 @@
 
 import UIKit
 import CoreData
+import Firebase
 
-var list = ["Buy Milk", "Run 5 miles", "Study templates"]
-
-var descList = ["Need to buy milk as only 1 is left", "Eun 10 miles everyday, morning n Night", "Study Assign 4 Notes"]
-
+var ref: DatabaseReference!
 var myIndex = 0
+
 
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var myTableView: UITableView!
     
+    
+    var TaskList = [TaskModel]()
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return (list.count)
-
+        return TaskList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell")
-        cell.textLabel?.text = list[indexPath.row]
         
-        return(cell)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FirstViewController
+        
+        let task: TaskModel
+        
+        task = TaskList[indexPath.row]
+        
+        //cell.showtask.text = task.task
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath)
-    {
-        if editingStyle == UITableViewCell.EditingStyle.delete {
-            list.remove(at: indexPath.row)
-            myTableView.reloadData()
-        }
-    }
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath)
+//    {
+//        if editingStyle == UITableViewCell.EditingStyle.delete {
+//            list.remove(at: indexPath.row)
+//            myTableView.reloadData()
+//        }
+//    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         myIndex = indexPath.row
@@ -53,6 +58,24 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        ref = Database.database().reference()
+        
+        ref.observe(DataEventType.value, with:{(DataSnapshot) in
+            
+            if DataSnapshot.childrenCount>0{
+                self.TaskList.removeAll()
+                
+                for tasks in DataSnapshot.children.allObjects as![DataSnapshot]{
+                    let taskObject = tasks.value as? [String: AnyObject]
+                    let tasktitle = taskObject?["tasktitle"]
+                    let taskdescription = taskObject?["taskdescription"]
+                    let taskId = taskObject?["id"]
+                    
+                    let task = TaskModel(id: taskId as! String?, task: tasktitle as! String?, description: taskdescription as! String? )
+                }
+            }
+        })
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
 

@@ -16,7 +16,6 @@ class InfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        titleLabel.text = list[myIndex]
-        descField.text = descList[myIndex]
+        
     }
 }

@@ -22,6 +22,7 @@
 		B653DDBE2398BEE200FE5265 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B653DDBD2398BEE200FE5265 /* GoogleService-Info.plist */; };
 		BA599B83C388C385D3EF8D4D /* Pods_Todo_List_B_Todo_List_BUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 665D30BD0AF54AB1BD13D1F5 /* Pods_Todo_List_B_Todo_List_BUITests.framework */; };
 		F398835604A5D86384442C32 /* Pods_Todo_List_BTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB4AFBFB6531FB6BAD910628 /* Pods_Todo_List_BTests.framework */; };
+		FFFF46A02399A79A000BAE77 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFF469F2399A79A000BAE77 /* TaskModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		ADA4957A0893D2C2A3DFB654 /* Pods-Todo_List_B.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todo_List_B.debug.xcconfig"; path = "Target Support Files/Pods-Todo_List_B/Pods-Todo_List_B.debug.xcconfig"; sourceTree = "<group>"; };
 		B653DDBD2398BEE200FE5265 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BB4AFBFB6531FB6BAD910628 /* Pods_Todo_List_BTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Todo_List_BTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFFF469F2399A79A000BAE77 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 				B653DDBD2398BEE200FE5265 /* GoogleService-Info.plist */,
 				3F4EBF3F2398675D00E5D99B /* Todo_List_B.xcdatamodeld */,
 				3FDEE5A4239890C5007B3198 /* InfoViewController.swift */,
+				FFFF469F2399A79A000BAE77 /* TaskModel.swift */,
 			);
 			path = Todo_List_B;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				3F4EBF352398675D00E5D99B /* AppDelegate.swift in Sources */,
 				3FDEE5A5239890C5007B3198 /* InfoViewController.swift in Sources */,
 				3F4EBF372398675D00E5D99B /* SceneDelegate.swift in Sources */,
+				FFFF46A02399A79A000BAE77 /* TaskModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
