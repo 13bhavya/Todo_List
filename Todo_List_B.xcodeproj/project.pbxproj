@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,6 +19,7 @@
 		3F4EBF5C2398675E00E5D99B /* Todo_List_BUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4EBF5B2398675E00E5D99B /* Todo_List_BUITests.swift */; };
 		3FDEE5A5239890C5007B3198 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDEE5A4239890C5007B3198 /* InfoViewController.swift */; };
 		B4FB82D3BCE27FAF8AF32EFD /* Pods_Todo_List_B.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B9DE5E2AAB0ADD5DBC9851E /* Pods_Todo_List_B.framework */; };
+		B653DDBE2398BEE200FE5265 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B653DDBD2398BEE200FE5265 /* GoogleService-Info.plist */; };
 		BA599B83C388C385D3EF8D4D /* Pods_Todo_List_B_Todo_List_BUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 665D30BD0AF54AB1BD13D1F5 /* Pods_Todo_List_B_Todo_List_BUITests.framework */; };
 		F398835604A5D86384442C32 /* Pods_Todo_List_BTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB4AFBFB6531FB6BAD910628 /* Pods_Todo_List_BTests.framework */; };
 /* End PBXBuildFile section */
@@ -66,6 +67,7 @@
 		9B9DE5E2AAB0ADD5DBC9851E /* Pods_Todo_List_B.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Todo_List_B.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E8D65435FF8ADA25A02A825 /* Pods-Todo_List_BTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todo_List_BTests.release.xcconfig"; path = "Target Support Files/Pods-Todo_List_BTests/Pods-Todo_List_BTests.release.xcconfig"; sourceTree = "<group>"; };
 		ADA4957A0893D2C2A3DFB654 /* Pods-Todo_List_B.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todo_List_B.debug.xcconfig"; path = "Target Support Files/Pods-Todo_List_B/Pods-Todo_List_B.debug.xcconfig"; sourceTree = "<group>"; };
+		B653DDBD2398BEE200FE5265 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BB4AFBFB6531FB6BAD910628 /* Pods_Todo_List_BTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Todo_List_BTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -107,7 +109,6 @@
 				6F2CD708CFD290AAD63FFBCE /* Pods-Todo_List_BTests.debug.xcconfig */,
 				9E8D65435FF8ADA25A02A825 /* Pods-Todo_List_BTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -144,6 +145,7 @@
 				3F4EBF422398675E00E5D99B /* Assets.xcassets */,
 				3F4EBF442398675E00E5D99B /* LaunchScreen.storyboard */,
 				3F4EBF472398675E00E5D99B /* Info.plist */,
+				B653DDBD2398BEE200FE5265 /* GoogleService-Info.plist */,
 				3F4EBF3F2398675D00E5D99B /* Todo_List_B.xcdatamodeld */,
 				3FDEE5A4239890C5007B3198 /* InfoViewController.swift */,
 			);
@@ -288,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F4EBF462398675E00E5D99B /* LaunchScreen.storyboard in Resources */,
+				B653DDBE2398BEE200FE5265 /* GoogleService-Info.plist in Resources */,
 				3F4EBF432398675E00E5D99B /* Assets.xcassets in Resources */,
 				3F4EBF3E2398675D00E5D99B /* Main.storyboard in Resources */,
 			);

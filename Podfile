@@ -9,8 +9,7 @@ target 'Todo_List_B' do
 
   pod 'Firebase/Analytics'
   pod 'Firebase/Auth'
-  pod 'Firebase/Firestore'
-  pod 'Firebase/Core'
+  pod 'Firebase/Database'
 
   target 'Todo_List_BTests' do
     inherit! :search_paths
