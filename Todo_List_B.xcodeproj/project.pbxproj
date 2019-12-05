@@ -17,7 +17,7 @@
 		3F4EBF462398675E00E5D99B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F4EBF442398675E00E5D99B /* LaunchScreen.storyboard */; };
 		3F4EBF512398675E00E5D99B /* Todo_List_BTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4EBF502398675E00E5D99B /* Todo_List_BTests.swift */; };
 		3F4EBF5C2398675E00E5D99B /* Todo_List_BUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4EBF5B2398675E00E5D99B /* Todo_List_BUITests.swift */; };
-		3F4EBF6A23986B1600E5D99B /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4EBF6923986B1600E5D99B /* InfoViewController.swift */; };
+		3FDEE5A5239890C5007B3198 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDEE5A4239890C5007B3198 /* InfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +54,7 @@
 		3F4EBF572398675E00E5D99B /* Todo_List_BUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Todo_List_BUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F4EBF5B2398675E00E5D99B /* Todo_List_BUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo_List_BUITests.swift; sourceTree = "<group>"; };
 		3F4EBF5D2398675E00E5D99B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3F4EBF6923986B1600E5D99B /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		3FDEE5A4239890C5007B3198 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +114,7 @@
 				3F4EBF442398675E00E5D99B /* LaunchScreen.storyboard */,
 				3F4EBF472398675E00E5D99B /* Info.plist */,
 				3F4EBF3F2398675D00E5D99B /* Todo_List_B.xcdatamodeld */,
-				3F4EBF6923986B1600E5D99B /* InfoViewController.swift */,
+				3FDEE5A4239890C5007B3198 /* InfoViewController.swift */,
 			);
 			path = Todo_List_B;
 			sourceTree = "<group>";
@@ -272,7 +272,7 @@
 				3F4EBF3B2398675D00E5D99B /* SecondViewController.swift in Sources */,
 				3F4EBF392398675D00E5D99B /* FirstViewController.swift in Sources */,
 				3F4EBF352398675D00E5D99B /* AppDelegate.swift in Sources */,
-				3F4EBF6A23986B1600E5D99B /* InfoViewController.swift in Sources */,
+				3FDEE5A5239890C5007B3198 /* InfoViewController.swift in Sources */,
 				3F4EBF372398675D00E5D99B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

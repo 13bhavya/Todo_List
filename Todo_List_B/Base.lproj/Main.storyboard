@@ -98,8 +98,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="hqm-aq-c3i"/>
                     <connections>
-                        <outlet property="descField" destination="PT7-3O-O2h" id="9v5-ZE-qRU"/>
-                        <outlet property="titleLabel" destination="zhK-HA-l4M" id="nwA-62-ZvJ"/>
+                        <outlet property="descField" destination="PT7-3O-O2h" id="Eii-79-553"/>
+                        <outlet property="titleLabel" destination="zhK-HA-l4M" id="eLu-93-4s7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2sr-4W-ap7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
