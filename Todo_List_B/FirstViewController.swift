@@ -10,9 +10,6 @@ import UIKit
 import CoreData
 import Firebase
 
-
-
-
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var ref: DatabaseReference!

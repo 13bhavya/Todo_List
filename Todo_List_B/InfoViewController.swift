@@ -7,9 +7,15 @@
 //
 
 import UIKit
+import Firebase
 
 class InfoViewController: UIViewController {
-
+    
+    var Title = [String]()
+    var descrip = [String]()
+    var ref: DatabaseReference!
+    var databaseHandle:DatabaseHandle!
+    
     @IBOutlet weak var titleLabel: UITextField!
     
     @IBOutlet weak var descField: UITextView!
@@ -17,5 +23,17 @@ class InfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        ref = Database.database().reference().child("Tasks")
+                
+//        databaseHandle =  ref?.child("Tasks").observe(.childAdded, with: { (snapshot) in
+//
+//
+//            let post = snapshot.value as? String
+//            if let actualPost = post {
+//                self.Title.append(actualPost)
+//
+//
+//            }
+//        })
     }
 }
