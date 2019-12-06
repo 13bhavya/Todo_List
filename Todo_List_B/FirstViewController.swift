@@ -19,6 +19,10 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     var TaskList = [TaskModel]()
     
+    var tasktitle = ""
+    var taskdescrip = ""
+    
+    
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCellController
@@ -35,6 +39,13 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return TaskList.count
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segue"{
+            let vc = segue.destination as? InfoViewController
+            vc?.taskdescrip = taskdescrip
+            vc?.tasktitle = tasktitle
+        }
+    }
     
     
 //    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath)
@@ -46,7 +57,12 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
 //    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        myIndex = indexPath.row
+        let index = TaskList[indexPath.row]
+        
+        tasktitle = index.task!
+        taskdescrip = index.description!
+        
+//        myIndex = indexPath.row
         performSegue(withIdentifier: "segue", sender: self)
      }
     
@@ -68,11 +84,10 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 
                 for tasks in snapshot.children.allObjects as![DataSnapshot]{
                     let taskObject = tasks.value as? [String: AnyObject]
-                    let taskdescription = taskObject?["task_description"]
-                    let tasktitle = taskObject?["task_title"]
-                    let taskId = taskObject?["id"]
                     
-                    let task = TaskModel(id: taskId as! String?, task: tasktitle as! String?, description: taskdescription as! String? )
+                    
+                    let task = TaskModel(id: taskObject?["id"] as? String, task: taskObject?["task_title"] as? String, description: taskObject?["task_description"] as?
+                        String )
                     
                     self.TaskList.append(task)
                     //print(tasktitle)

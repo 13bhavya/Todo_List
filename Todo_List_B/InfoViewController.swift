@@ -20,11 +20,18 @@ class InfoViewController: UIViewController {
     
     @IBOutlet weak var descField: UITextView!
     
+    var tasktitle = ""
+       var taskdescrip = ""
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         ref = Database.database().reference().child("Tasks")
                 
+        titleLabel.text = tasktitle
+        descField.text = taskdescrip
+        
 //        databaseHandle =  ref?.child("Tasks").observe(.childAdded, with: { (snapshot) in
 //
 //
