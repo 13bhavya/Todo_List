@@ -7,14 +7,18 @@
 //
 
 import UIKit
-//import Firebase
+import Firebase
 
 class InfoViewController: UIViewController {
     
+    var ref: DatabaseReference!
     //var Title = [String]()
     //var descrip = [String]()
     //var ref: DatabaseReference!
     //var databaseHandle:DatabaseHandle!
+    var taskId = ""
+    var tasktitle = ""
+    var taskdescrip = ""
     
     @IBOutlet weak var titleLabel: UITextField!
     
@@ -27,28 +31,22 @@ class InfoViewController: UIViewController {
         }
     }
     
-    var tasktitle = ""
-       var taskdescrip = ""
-    
-    
+    @IBAction func updateBtn(_ sender: UIButton) {
+        guard let key = ref.child("Tasks").child(taskId).key else {
+            return
+        }
+        let task = ["task_description" : descField.text,
+                    "task_title" : titleLabel.text ]
+        ref.child(key).updateChildValues(task)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        ref = Database.database().reference().child("Tasks")
+        ref = Database.database().reference().child("Tasks")
                 
         titleLabel.text = tasktitle
         descField.text = taskdescrip
-        
-//        databaseHandle =  ref?.child("Tasks").observe(.childAdded, with: { (snapshot) in
-//
-//
-//            let post = snapshot.value as? String
-//            if let actualPost = post {
-//                self.Title.append(actualPost)
-//
-//
-//            }
-//        })
+
     }
 }

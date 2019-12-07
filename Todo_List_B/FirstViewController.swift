@@ -20,6 +20,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     var TaskList = [TaskModel]()
     
+    var taskId = ""
     var tasktitle = ""
     var taskdescrip = ""
     
@@ -44,6 +45,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let vc = segue.destination as? InfoViewController
             vc?.taskdescrip = taskdescrip
             vc?.tasktitle = tasktitle
+            vc?.taskId = taskId
         }
     }
     
@@ -62,6 +64,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         tasktitle = index.task!
         taskdescrip = index.description!
+        taskId = index.id!
         
         performSegue(withIdentifier: "segue", sender: self)
     }
