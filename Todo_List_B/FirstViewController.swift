@@ -48,80 +48,51 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
         if editingStyle == UITableViewCell.EditingStyle.delete {
-            ref.child("Tasks").childByAutoId().removeValue { (error, refer) in
-                        if error != nil {
-                          print("Failed")
-                       } else {
-                            self.myTableView.deleteRows(at: [indexPath], with: .fade )
-                            print(refer)
-                           print("Task removed")
-                        }
-                    }
+            let currentIndex:String = TaskList[indexPath.row].id ?? ""
+            print(currentIndex)
+            ref.child(currentIndex).removeValue()
+            TaskList.remove(at: indexPath.row)
+            myTableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
-    
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath)
-//   {
-////    guard let key = ref.child("Tasks").childByAutoId().key else {
-////        return
-////    }
-//       if editingStyle == .delete {
-//        ref.child("Tasks").childByAutoId().removeValue { (error, refer) in
-//            if error != nil {
-//                print("Failed")
-//            } else {
-//                self.myTableView.deleteRows(at: [indexPath], with: .fade )
-//                print(refer)
-//                print("Task removed")
-//            }
-//        }
-//    }
-//    }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let index = TaskList[indexPath.row]
         
         tasktitle = index.task!
         taskdescrip = index.description!
         
-//        myIndex = indexPath.row
         performSegue(withIdentifier: "segue", sender: self)
-     }
+    }
     
-    override func viewDidAppear(_ animated: Bool) {
+   override func viewDidAppear(_ animated: Bool) {
         myTableView.reloadData()
     }
     
     func Fetchdata(){
+        
+        //myTableView.reloadData()
         ref = Database.database().reference().child("Tasks");
         
-        ref.observe(DataEventType.value, with:{(snapshot) in
-            
-            if snapshot.childrenCount>0{
-                //self.TaskList.removeAll()
-                
-                for tasks in snapshot.children.allObjects as![DataSnapshot]{
-                    let taskObject = tasks.value as? [String: AnyObject]
-                    
-                    
-                    let task = TaskModel(id: taskObject?["id"] as? String, task: taskObject?["task_title"] as? String, description: taskObject?["task_description"] as?
-                        String )
-                    
-                    self.TaskList.append(task)
-                    //print(tasktitle)
-                }
-                
+        ref.observeSingleEvent(of: .value) { (snapshots) in
+            for case let snapshot as DataSnapshot in snapshots.children{
+                let id = snapshot.key
+                let value = snapshot.value as? NSDictionary
+                let task = value?["task_title"] as? String ?? ""
+                let description = value?["task_description"] as? String ?? ""
+                let taskObject = TaskModel(id: id, task: task, description: description)
+                self.TaskList.append(taskObject)
             }
-        })
+        }
     }
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        //myTableView.reloadData()
         Fetchdata()
+        
     }
 }
 

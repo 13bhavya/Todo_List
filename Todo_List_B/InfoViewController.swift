@@ -20,8 +20,16 @@ class InfoViewController: UIViewController {
     
     @IBOutlet weak var descField: UITextView!
     
+    @IBAction func backBtn(_ sender: UIButton) {
+        func prepare(for segue: UIStoryboardSegue,
+                     sender: AnyObject?) {
+           
+        }
+    }
+    
     var tasktitle = ""
        var taskdescrip = ""
+    
     
     
     override func viewDidLoad() {
