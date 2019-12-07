@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import Firebase
 
-class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarControllerDelegate {
     
     var ref: DatabaseReference!
     var myIndex = 0
@@ -65,34 +65,32 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         performSegue(withIdentifier: "segue", sender: self)
     }
-    
-   override func viewDidAppear(_ animated: Bool) {
-        myTableView.reloadData()
-    }
-    
-    func Fetchdata(){
-        
-        //myTableView.reloadData()
-        ref = Database.database().reference().child("Tasks");
-        
+      
+    func viewData() {
         ref.observeSingleEvent(of: .value) { (snapshots) in
-            for case let snapshot as DataSnapshot in snapshots.children{
-                let id = snapshot.key
-                let value = snapshot.value as? NSDictionary
-                let task = value?["task_title"] as? String ?? ""
-                let description = value?["task_description"] as? String ?? ""
-                let taskObject = TaskModel(id: id, task: task, description: description)
-                self.TaskList.append(taskObject)
-            }
-        }
+                   for case let snapshot as DataSnapshot in snapshots.children{
+                       let id = snapshot.key
+                       let value = snapshot.value as? NSDictionary
+                       let task = value?["task_title"] as? String ?? ""
+                       let description = value?["task_description"] as? String ?? ""
+                       let taskObject = TaskModel(id: id, task: task, description: description)
+                       self.TaskList.append(taskObject)
+                       self.myTableView.reloadData()
+                   }
+               }
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        myTableView.reloadData()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        //myTableView.reloadData()
-        Fetchdata()
+        ref = Database.database().reference().child("Tasks");
+        
+        viewData().self
+        //Fetchdata()
         
     }
+    
 }
 

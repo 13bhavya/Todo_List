@@ -23,14 +23,9 @@ class SecondViewController: UIViewController {
     @IBAction func addItem(_ sender: UIButton) {
         if (input.text != "") || (listInfo.text != "")
         {
-            saveData()
-            //self.ref.child("Task").setValue(["Title" : input])
-            //self.ref.child("Task").setValue(["Description" :listInfo])
-            //list.append(input.text!)
-            //descList.append(listInfo.text!)
+            saveData().self
             input.text = ""
             listInfo.text = ""
-            
         }
     }
     override func viewDidLoad() {
@@ -48,6 +43,7 @@ class SecondViewController: UIViewController {
                     "task_description": listInfo.text! as String]
         
         ref.child(key).setValue(task)
+        
     }
 }
 
