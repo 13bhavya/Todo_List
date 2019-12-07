@@ -14,6 +14,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     var ref: DatabaseReference!
     var myIndex = 0
+    var refresher: UIRefreshControl!
     
     @IBOutlet weak var myTableView: UITableView!
     
@@ -21,7 +22,6 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     var tasktitle = ""
     var taskdescrip = ""
-    
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -47,13 +47,37 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            ref.child("Tasks").childByAutoId().removeValue { (error, refer) in
+                        if error != nil {
+                          print("Failed")
+                       } else {
+                            self.myTableView.deleteRows(at: [indexPath], with: .fade )
+                            print(refer)
+                           print("Task removed")
+                        }
+                    }
+        }
+    }
     
 //    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath)
-//    {
-//        if editingStyle == UITableViewCell.EditingStyle.delete {
-//            list.remove(at: indexPath.row)
-//            myTableView.reloadData()
+//   {
+////    guard let key = ref.child("Tasks").childByAutoId().key else {
+////        return
+////    }
+//       if editingStyle == .delete {
+//        ref.child("Tasks").childByAutoId().removeValue { (error, refer) in
+//            if error != nil {
+//                print("Failed")
+//            } else {
+//                self.myTableView.deleteRows(at: [indexPath], with: .fade )
+//                print(refer)
+//                print("Task removed")
+//            }
 //        }
+//    }
 //    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -70,17 +94,13 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         myTableView.reloadData()
     }
     
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-                
+    func Fetchdata(){
         ref = Database.database().reference().child("Tasks");
         
         ref.observe(DataEventType.value, with:{(snapshot) in
             
             if snapshot.childrenCount>0{
-                self.TaskList.removeAll()
+                //self.TaskList.removeAll()
                 
                 for tasks in snapshot.children.allObjects as![DataSnapshot]{
                     let taskObject = tasks.value as? [String: AnyObject]
@@ -92,8 +112,16 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     self.TaskList.append(task)
                     //print(tasktitle)
                 }
+                
             }
         })
+    }
+    
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        Fetchdata()
     }
 }
 

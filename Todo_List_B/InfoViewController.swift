@@ -7,14 +7,14 @@
 //
 
 import UIKit
-import Firebase
+//import Firebase
 
 class InfoViewController: UIViewController {
     
-    var Title = [String]()
-    var descrip = [String]()
-    var ref: DatabaseReference!
-    var databaseHandle:DatabaseHandle!
+    //var Title = [String]()
+    //var descrip = [String]()
+    //var ref: DatabaseReference!
+    //var databaseHandle:DatabaseHandle!
     
     @IBOutlet weak var titleLabel: UITextField!
     
@@ -27,7 +27,7 @@ class InfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ref = Database.database().reference().child("Tasks")
+//        ref = Database.database().reference().child("Tasks")
                 
         titleLabel.text = tasktitle
         descField.text = taskdescrip
