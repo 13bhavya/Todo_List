@@ -1,8 +1,12 @@
 //
 //  TaskModel.swift
-//  Todo_List_B
+//  Project Name: Todo_List_B
+//  Name : Bhavya Shah
+//  Student Id: 301076681
+//  Developing Todo list
+
 //
-//  Created by setas on 2019-12-05.
+//  Created by student on 2019-12-04.
 //  Copyright © 2019 student. All rights reserved.
 //
 
