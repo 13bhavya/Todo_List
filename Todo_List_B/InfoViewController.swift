@@ -19,6 +19,7 @@ class InfoViewController: UIViewController {
     var taskId = ""
     var tasktitle = ""
     var taskdescrip = ""
+    public var firstViewController:FirstViewController!
     
     @IBOutlet weak var titleLabel: UITextField!
     
@@ -38,6 +39,7 @@ class InfoViewController: UIViewController {
         let task = ["task_description" : descField.text,
                     "task_title" : titleLabel.text ]
         ref.child(key).updateChildValues(task)
+        firstViewController.viewData()
     }
     
     override func viewDidLoad() {
@@ -47,6 +49,6 @@ class InfoViewController: UIViewController {
                 
         titleLabel.text = tasktitle
         descField.text = taskdescrip
-
+        
     }
 }

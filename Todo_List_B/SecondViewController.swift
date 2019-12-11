@@ -15,6 +15,8 @@ class SecondViewController: UIViewController {
 
     var ref: DatabaseReference!
     //let ref = Database.database().reference()
+    //var secondViewController:SecondViewController!
+
 
     @IBOutlet weak var input: UITextField!
     
@@ -26,6 +28,7 @@ class SecondViewController: UIViewController {
             saveData().self
             input.text = ""
             listInfo.text = ""
+    
         }
     }
     override func viewDidLoad() {
@@ -36,12 +39,9 @@ class SecondViewController: UIViewController {
     }
     
     func saveData() {
-        
         let key = ref.childByAutoId().key!
-        
         let task = ["task_title": input.text! as String,
                     "task_description": listInfo.text! as String]
-        
         ref.child(key).setValue(task)
         
     }

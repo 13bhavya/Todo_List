@@ -15,6 +15,8 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var ref: DatabaseReference!
     var myIndex = 0
     var refresher: UIRefreshControl!
+    var firstViewController:FirstViewController!
+
     
     @IBOutlet weak var myTableView: UITableView!
     
@@ -46,6 +48,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             vc?.taskdescrip = taskdescrip
             vc?.tasktitle = tasktitle
             vc?.taskId = taskId
+            vc?.firstViewController = self
         }
     }
     
@@ -65,11 +68,11 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tasktitle = index.task!
         taskdescrip = index.description!
         taskId = index.id!
-        
         performSegue(withIdentifier: "segue", sender: self)
     }
       
     func viewData() {
+        self.TaskList = [TaskModel]()
         ref.observeSingleEvent(of: .value) { (snapshots) in
                    for case let snapshot as DataSnapshot in snapshots.children{
                        let id = snapshot.key
@@ -83,17 +86,14 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
                }
     }
     override func viewDidAppear(_ animated: Bool) {
-        myTableView.reloadData()
+        viewData()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference().child("Tasks");
         
-        viewData().self
-        //Fetchdata()
-        
     }
-    
+
 }
 
