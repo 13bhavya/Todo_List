@@ -61,7 +61,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             myTableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let index = TaskList[indexPath.row]
         

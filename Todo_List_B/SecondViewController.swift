@@ -35,7 +35,6 @@ class SecondViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         ref = Database.database().reference().child("Tasks")
-        
     }
     
     func saveData() {

@@ -26,10 +26,7 @@ class InfoViewController: UIViewController {
     @IBOutlet weak var descField: UITextView!
     
     @IBAction func backBtn(_ sender: UIButton) {
-        func prepare(for segue: UIStoryboardSegue,
-                     sender: AnyObject?) {
-           
-        }
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func updateBtn(_ sender: UIButton) {
